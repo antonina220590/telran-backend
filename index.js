@@ -20,6 +20,12 @@ app.use(
     origin: "*",
   })
 );
+
+app.use(
+  cors({
+    origin: "https://gardening-shop.onrender.com",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
