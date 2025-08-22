@@ -6,6 +6,7 @@ const order = require("./routes/order");
 const products = require("./routes/products");
 const sequelize = require("./database/database");
 const cors = require("cors");
+require("dotenv").config();
 const Category = require("./database/models/category");
 const Product = require("./database/models/product");
 
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 3333;
 Category.hasMany(Product);
 
 const app = express();
+const clientUrl =
+  process.env.CLIENT_URL || "https://gardening-shop.onrender.com";
 
 app.use(
   cors({
@@ -23,7 +26,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "https://gardening-shop.onrender.com",
+    origin: clientUrl,
   })
 );
 app.use(express.json());
